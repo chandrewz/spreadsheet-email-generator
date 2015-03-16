@@ -11,12 +11,20 @@ function button() {
   var e = document.getElementById('option');
   var option = e.options[e.selectedIndex].value;
   var domain = document.getElementById('domain').value;
+  var baseRow = data[0];
   for (var i in data) {
     var row = data[i];
     if (!isRowEmpty(row)) {
       row[0] = row[0] ? row[0].trim().toLowerCase().capitalize() : '';
       row[1] = row[1] ? row[1].trim().toLowerCase().capitalize() : '';
       row[2] = row[2] ? row[2].trim().toLowerCase().capitalize() : '';
+      row[3] = data[0][3] ? data[0][3] : '';
+      row[4] = data[0][4] ? data[0][4] : '';
+      row[6] = data[0][6] ? data[0][6] : '';
+      row[7] = data[0][7] ? data[0][7] : '';
+      row[8] = data[0][8] ? data[0][8] : '';
+      row[9] = data[0][9] ? data[0][9] : '';
+      row[10] = data[0][10] ? data[0][10] : '';
       switch(option) {
         case "0":
           // [first name][last name]
