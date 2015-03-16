@@ -15,9 +15,12 @@ function button() {
   for (var i in data) {
     var row = data[i];
     if (!isRowEmpty(row)) {
-      row[0] = row[0] ? row[0].trim().toLowerCase().capitalize() : '';
-      row[1] = row[1] ? row[1].trim().toLowerCase().capitalize() : '';
-      row[2] = row[2] ? row[2].trim().toLowerCase().capitalize() : '';
+      row[0] = row[0] ? row[0].trim().capitalize() : '';
+      row[1] = row[1] ? row[1].trim().capitalize() : '';
+      row[2] = row[2] ? row[2].trim().capitalize() : '';
+      var firstName = row[2].toLowerCase().replace(/[^a-z]/gi,'');
+      var middleName = row[1].toLowerCase().replace(/[^a-z]/gi,'');
+      var lastName = row[0].toLowerCase().replace(/[^a-z]/gi,'');
       row[3] = data[0][3] ? data[0][3] : '';
       row[4] = data[0][4] ? data[0][4] : '';
       row[6] = data[0][6] ? data[0][6] : '';
@@ -28,31 +31,31 @@ function button() {
       switch(option) {
         case "0":
           // [first name][last name]
-          row[5] = row[2].toLowerCase() + row[0].toLowerCase() + '@' + domain;
+          row[5] = firstName + lastName + '@' + domain;
           break;
         case "1":
           // [first name].[last name]
-          row[5] = row[2].toLowerCase() + '.' + row[0].toLowerCase() + '@' + domain;
+          row[5] = firstName + '.' + lastName + '@' + domain;
           break;
         case "2":
           // [last name].[first name]
-          row[5] = row[0].toLowerCase() + '.' + row[2].toLowerCase() + '@' + domain;
+          row[5] = lastName + '.' + firstName + '@' + domain;
           break;
         case "3":
           // [first initial][last name]
-          row[5] = row[2].toLowerCase().charAt(0) + row[0].toLowerCase() + '@' + domain;
+          row[5] = firstName.charAt(0) + lastName + '@' + domain;
           break;
         case "4":
           // [last name][first initial]
-          row[5] = row[0].toLowerCase() + row[2].toLowerCase().charAt(0) + '@' + domain;
+          row[5] = lastName + firstName.charAt(0) + '@' + domain;
           break;
         case "5":
           // [first name][middle initial][last name]
-          row[5] = row[2].toLowerCase() + row[1].toLowerCase().charAt(0) + row[0].toLowerCase() + '@' + domain;
+          row[5] = firstName + middleName.charAt(0) + lastName + '@' + domain;
           break;
         case "6":
           // [first name].[middle initial].[last name]
-          row[5] = row[2].toLowerCase() + '.' + row[1].toLowerCase().charAt(0) + '.' + row[0].toLowerCase() + '@' + domain;
+          row[5] = firstName + '.' + middleName.charAt(0) + '.' + lastName + '@' + domain;
           break;
         default:
       }
@@ -87,7 +90,7 @@ function init() {
 }
 
 String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
 function isRowEmpty(row) {
