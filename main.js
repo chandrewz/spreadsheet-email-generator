@@ -19,13 +19,33 @@ function button() {
       row[2] = row[2] ? row[2].trim().toLowerCase().capitalize() : '';
       switch(option) {
         case "0":
-          row[3] = row[0].toLowerCase() + '@' + domain;
-          break;
-        case "1":
+          // [first name][last name]
           row[3] = row[0].toLowerCase() + row[2].toLowerCase() + '@' + domain;
           break;
+        case "1":
+          // [first name].[last name]
+          row[3] = row[0].toLowerCase() + '.' + row[2].toLowerCase() + '@' + domain;
+          break;
         case "2":
+          // [last name].[first name]
+          row[3] = row[2].toLowerCase() + '.' + row[0].toLowerCase() + '@' + domain;
+          break;
+        case "3":
+          // [first initial][last name]
           row[3] = row[0].toLowerCase().charAt(0) + row[2].toLowerCase() + '@' + domain;
+          break;
+        case "4":
+          // [last name][first initial]
+          row[3] = row[2].toLowerCase() + row[0].toLowerCase().charAt(0) + '@' + domain;
+          break;
+        case "5":
+          // [first name][middle initial][last name]
+          row[3] = row[0].toLowerCase() + row[1].toLowerCase().charAt(0) + row[2].toLowerCase() + '@' + domain;
+          break;
+        case "6":
+          // [first name].[middle initial].[last name]
+          row[3] = row[0].toLowerCase() + '.' + row[1].toLowerCase().charAt(0) + '.' + row[2].toLowerCase() + '@' + domain;
+          break;
         default:
       }
       data[i] = row;
@@ -43,7 +63,19 @@ function init() {
     minSpareRows: 1,
     colHeaders: ['First Name', 'Middle Name', 'Last Name', 'Email'],
     colWidths: [200, 200, 200, 200],
-    contextMenu: true
+    contextMenu: true,
+    cells : function(row, col, prop) {
+      var cellProperties = {};
+
+      if (col == 3) {
+          cellProperties.readOnly = true;
+      }
+      else {
+          cellProperties.readOnly = false;
+      }
+
+      return cellProperties;
+    }
   });
 }
 
