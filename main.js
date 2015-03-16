@@ -1,5 +1,5 @@
 var data = [
-  ['John', 'Jacob', 'Smith', '']
+  ['Last Name',  'Middle Name', 'First Name',  'Location', 'Title', 'Email', 'School District', 'State', 'Regional Service Center', 'Lead Source', 'Lead Status'],
 ];
 
 var container = document.getElementById('hot');
@@ -20,31 +20,31 @@ function button() {
       switch(option) {
         case "0":
           // [first name][last name]
-          row[3] = row[0].toLowerCase() + row[2].toLowerCase() + '@' + domain;
+          row[5] = row[2].toLowerCase() + row[0].toLowerCase() + '@' + domain;
           break;
         case "1":
           // [first name].[last name]
-          row[3] = row[0].toLowerCase() + '.' + row[2].toLowerCase() + '@' + domain;
+          row[5] = row[2].toLowerCase() + '.' + row[0].toLowerCase() + '@' + domain;
           break;
         case "2":
           // [last name].[first name]
-          row[3] = row[2].toLowerCase() + '.' + row[0].toLowerCase() + '@' + domain;
+          row[5] = row[0].toLowerCase() + '.' + row[2].toLowerCase() + '@' + domain;
           break;
         case "3":
           // [first initial][last name]
-          row[3] = row[0].toLowerCase().charAt(0) + row[2].toLowerCase() + '@' + domain;
+          row[5] = row[2].toLowerCase().charAt(0) + row[0].toLowerCase() + '@' + domain;
           break;
         case "4":
           // [last name][first initial]
-          row[3] = row[2].toLowerCase() + row[0].toLowerCase().charAt(0) + '@' + domain;
+          row[5] = row[0].toLowerCase() + row[2].toLowerCase().charAt(0) + '@' + domain;
           break;
         case "5":
           // [first name][middle initial][last name]
-          row[3] = row[0].toLowerCase() + row[1].toLowerCase().charAt(0) + row[2].toLowerCase() + '@' + domain;
+          row[5] = row[2].toLowerCase() + row[1].toLowerCase().charAt(0) + row[0].toLowerCase() + '@' + domain;
           break;
         case "6":
           // [first name].[middle initial].[last name]
-          row[3] = row[0].toLowerCase() + '.' + row[1].toLowerCase().charAt(0) + '.' + row[2].toLowerCase() + '@' + domain;
+          row[5] = row[2].toLowerCase() + '.' + row[1].toLowerCase().charAt(0) + '.' + row[0].toLowerCase() + '@' + domain;
           break;
         default:
       }
@@ -61,13 +61,12 @@ function init() {
   {
     data: data,
     minSpareRows: 1,
-    colHeaders: ['First Name', 'Middle Name', 'Last Name', 'Email'],
-    colWidths: [200, 200, 200, 200],
+    colHeaders: ['Last Name',  'Middle Name', 'First Name',  'Location', 'Title', 'Email', 'School District', 'State', 'Regional Service Center', 'Lead Source', 'Lead Status'],
     contextMenu: true,
     cells : function(row, col, prop) {
       var cellProperties = {};
 
-      if (col == 3) {
+      if (col == 5) {
           cellProperties.readOnly = true;
       }
       else {
