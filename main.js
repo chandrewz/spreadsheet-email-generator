@@ -21,7 +21,7 @@ function button() {
       var firstName = row[2].toLowerCase().replace(/[^a-z]/gi,'');
       var middleName = row[1].toLowerCase().replace(/[^a-z]/gi,'');
       var lastName = row[0].toLowerCase().replace(/[^a-z]/gi,'');
-      row[3] = row[3] ? row[3].trim().capitalize() : '';
+      row[3] = row[3] ? row[3].trim().capitalize().replace(/[^\w\s]/gi, '') : '';
       row[4] = row[4] ? row[4].trim().capitalize() : '';
       row[6] = data[0][6] ? data[0][6] : '';
       row[7] = data[0][7] ? data[0][7] : '';
@@ -69,6 +69,26 @@ function button() {
           // [first initial].[last name]
           row[5] = firstName.charAt(0) + '.' + lastName + '@' + domain;
           break;
+        case "9":
+          // [first name]_[last name]
+          row[5] = firstName + '_' + lastName + '@' + domain;
+          break;
+        case "10":
+          // [first initial][middle initial][last name]
+          row[5] = firstName.charAt(0) + middleName.charAt(0) + lastName + '@' + domain;
+          break;
+        case "11":
+          // lastnamefirstinitalmiddleinital
+          row[5] = lastName + firstName.charAt(0) + middleName.charAt(0) + '@' + domain;
+          break;
+        case "12":
+          // lastname firstname
+          row[5] = lastName + firstName + '@' + domain;
+          break;
+        case "13":
+          // lastname
+          row[5] = lastName + '@' + domain;
+          break;
         default:
       }
       data[i] = row;
@@ -101,7 +121,8 @@ function init() {
 
       return cellProperties;
     },
-    stretchH: 'all'
+    stretchH: 'all',
+    copyRowsLimit: 10000
   });
 }
 

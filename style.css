@@ -17,10 +17,9 @@ h1 {
 }
 
 p {
-  width: 960px;
   margin: 40px auto;
   color: #000;
-  line-height: 200%;
+  line-height: 175%;
 }
 
 input {
@@ -42,8 +41,17 @@ input {
   margin: 0;
   width: 100%;
   color: white;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.wholeblock {
+  display: flex;
+}
+
+.halfblock {
+  width: 50%;
+  padding-bottom: 40px;
 }
 
 .step-1 {
@@ -78,7 +86,7 @@ input {
   font-size: 20px;
   color: white;
   border: 3px solid white;
-  padding: 1em 1.6em;
+  padding: .5em 1em;
   font-weight: 100;
   border-radius: 5px;
   line-height: 1em;
@@ -87,4 +95,8 @@ input {
 
 #hot {
   margin-top: 1em;
+}
+
+.small {
+  font-size: 16px;
 }
