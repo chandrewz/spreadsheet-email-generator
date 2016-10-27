@@ -89,6 +89,10 @@ function button() {
           // lastname
           row[5] = lastName + '@' + domain;
           break;
+        case "14":
+          // lastname_firstname
+          row[5] = lastName + '_' + firstName + '@' + domain;
+          break;
         default:
       }
       data[i] = row;
