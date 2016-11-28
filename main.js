@@ -1,5 +1,20 @@
 var data = [
-  ['Last Name',  'Middle Name', 'First Name',  'Location', 'Title', 'Email', 'School District', 'State', 'Regional Service Center', 'Lead Source', 'Lead Status'],
+  [
+    'Last Name',
+    'Middle Name',
+    'First Name', 
+    'Location',
+    'Title',
+    'Email',
+    'School District',
+    'State',
+    'Regional Service Center',
+    'Lead Source',
+    'Lead Status',
+    'Date of Birth',
+    'Date of Hire',
+    'Salary'
+  ],
 ];
 
 var container = document.getElementById('hot');
