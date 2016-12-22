@@ -45,7 +45,6 @@ function button() {
       row[10] = data[0][10] ? data[0][10] : '';
 
       // dob
-      console.log(moment(data[0][11], 'MM/DD/YYYY'));
       row[11] = row[11] ? moment(row[11], 'MM/DD/YYYY').format('MM/DD/YYYY') : '';
 
       // date of hire
