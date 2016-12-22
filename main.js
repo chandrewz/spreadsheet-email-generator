@@ -156,7 +156,8 @@ function init() {
       return cellProperties;
     },
     stretchH: 'all',
-    copyRowsLimit: 10000
+    copyRowsLimit: 10000,
+    copyColsLimit: 10000
   });
 }
 
