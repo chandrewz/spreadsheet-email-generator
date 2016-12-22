@@ -44,11 +44,13 @@ function button() {
       row[9] = data[0][9] ? data[0][9] : '';
       row[10] = data[0][10] ? data[0][10] : '';
 
+      var dateFormat = document.getElementById('date').value ? document.getElementById('date').value : 'MM/DD/YYYY';
+
       // dob
-      row[11] = row[11] ? moment(row[11], 'MM/DD/YYYY').format('MM/DD/YYYY') : '';
+      row[11] = row[11] ? moment(row[11], dateFormat).format('MM/DD/YYYY') : '';
 
       // date of hire
-      row[12] = row[12] ? moment(row[12], 'MM/DD/YYYY').format('MM/DD/YYYY') : '';
+      row[12] = row[12] ? moment(row[12], dateFormat).format('MM/DD/YYYY') : '';
 
       switch(option) {
         case "0":

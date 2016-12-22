@@ -54,6 +54,11 @@ input {
   padding-bottom: 40px;
 }
 
+.thirdblock {
+  width: 33%;
+  padding-bottom: 40px;
+}
+
 .step-1 {
   background-color: #348fd4;
 }
@@ -80,6 +85,14 @@ input {
 
 .step-3 h2, .step-3 p {
   color: #fff;
+}
+
+.step-4 {
+  background-color: #ffc19f;
+}
+
+.step-4 h2, .step-4 p {
+  color: #000;
 }
 
 .button {

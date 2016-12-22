@@ -12,18 +12,13 @@
 
 	<div class="scrollblock intro">
 			<h1>email generator</h1>
-			<p>
-				format your spreadsheet data
-			</p>
 		</div>
 
 		<div class="wholeblock">
-			<div class="halfblock step-1">
-				<h2>step 1</h2>
+			<div class="thirdblock step-1">
+				<h2>choose email format</h2>
 				<p>
-					choose email format<br>
-					this will format your emails<br>
-					<span class="small">ex. 'john@gmail.com', 'johnsmith@gmail.com', 'jsmith@gmail.com'</span>
+					<span class="small">ex. 'john@gmail.com', 'jsmith@gmail.com'</span>
 				</p>
 				<select id="option" style="font-size: 20px">
 					<option value="0">[first name][last name]</option>
@@ -44,13 +39,20 @@
 				</select>
 			</div>
 
-			<div class="halfblock step-2">
-				<h2>step 2</h2>
+			<div class="thirdblock step-2">
+				<h2>enter email domain</h2>
 				<p>
-					enter email domain<br>
-					this will be the @ domain
+					the @ domain
 				</p>
 				<input id="domain" placeholder="example.com">
+			</div>
+
+			<div class="thirdblock step-4">
+				<h2>date format</h2>
+				<p>
+					expects default: 'MM/DD/YYYY'
+				</p>
+				<input id="date" placeholder="MM/DD/YYYY">
 			</div>
 		</div>
 
