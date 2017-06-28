@@ -27,22 +27,50 @@ function button() {
   var option = e.options[e.selectedIndex].value;
   var domain = document.getElementById('domain').value;
   var baseRow = data[0];
+  var titles = document.getElementById('titles').value
+  var titlesArray = titles.length > 0 ? titles.split(",").map(function(item) {
+    return item.trim()
+  }) : [];
+  window.localStorage.titles = titles
+
   for (var i in data) {
     var row = data[i];
     if (!isRowEmpty(row)) {
+
+      // name
       row[0] = row[0] ? row[0].trim().capitalize() : '';
       row[1] = row[1] ? row[1].trim().capitalize() : '';
       row[2] = row[2] ? row[2].trim().capitalize() : '';
       var firstName = row[2].toLowerCase().replace(/[^a-z]/gi,'');
       var middleName = row[1].toLowerCase().replace(/[^a-z]/gi,'');
       var lastName = row[0].toLowerCase().replace(/[^a-z]/gi,'');
+
+      // location
       row[3] = row[3] ? row[3].trim().capitalize().replace(/[^\w\s]/gi, '') : '';
+
+      // title
       row[4] = row[4] ? row[4].trim().capitalize() : '';
+
+      // school district
       row[6] = data[0][6] ? data[0][6] : '';
+
+      // state
       row[7] = data[0][7] ? data[0][7] : '';
+
+      // Regional Service Center
       row[8] = data[0][8] ? data[0][8] : '';
+
+      // Lead Source
       row[9] = data[0][9] ? data[0][9] : '';
-      row[10] = data[0][10] ? data[0][10] : '';
+
+      // Lead Status
+      if (row[4] && titlesArray.length > 0 && titlesArray.indexOf(row[4])) {
+        row[10] = 'Do Not Market'
+      } else if (row[4] && data[0][10]) {
+        row[10] = data[0][10]
+      } else {
+        row[10] = ''
+      }
 
       var dateFormat = document.getElementById('date').value ? document.getElementById('date').value : 'MM/DD/YYYY';
 
@@ -128,7 +156,7 @@ function button() {
 }
 
 function init() {
-  var cellWidth = screen.width / 12;
+  var cellWidth = screen.width / 14;
 
   hot = new Handsontable(container,
   {
@@ -168,6 +196,8 @@ function init() {
     copyRowsLimit: 10000,
     copyColsLimit: 10000
   });
+
+  document.getElementById('titles').value = window.localStorage.titles ? window.localStorage.titles : ''
 }
 
 String.prototype.capitalize = function() {
