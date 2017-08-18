@@ -214,3 +214,51 @@ function isRowEmpty(row) {
 
   return true;
 }
+
+function exportCsv() {
+  var header = hot.getColHeader();
+  var data = hot.getData();
+
+  hrlatorCSV(header, data);
+}
+
+function hrlatorCSV(header, data) {
+  // console.log(header);
+  // console.log(data);
+    
+  // This is to avoid accidentally splitting the actual contents
+  tmpColDelim = String.fromCharCode(11), // vertical tab character
+  tmpRowDelim = String.fromCharCode(0), // null character
+
+  // actual delimiter characters for CSV format
+  colDelim = '","',
+  rowDelim = '"\r\n"',
+
+      csv =  '"' + data.map(function (rval, index) {
+          return rval.map(function (cval, jndex) {
+              // escape double quotes
+              var out = "";
+              if (!!cval) {
+                out = cval.toString();
+              }
+              return out;
+          }).join(tmpColDelim);
+      }).join(tmpRowDelim)
+          .split(tmpRowDelim).join(rowDelim)
+          .split(tmpColDelim).join(colDelim) + '"';
+
+    // console.log("CSV");
+    // console.log(csv);
+    
+    // Data URI
+    var uri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+    var downloadLink = document.createElement("a");
+    downloadLink.href = uri;
+    downloadLink.download = "data.csv";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+
+
+}
