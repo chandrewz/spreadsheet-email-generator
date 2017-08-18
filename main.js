@@ -11,8 +11,8 @@ var data = [
     'Regional Service Center',
     'Lead Source',
     'Lead Status',
-    'Date of Birth',
-    'Date of Hire',
+    'Birthdate',
+    'Hire Date',
     'Salary'
   ],
 ];
@@ -175,8 +175,8 @@ function init() {
       'Regional Service Center',
       'Lead Source',
       'Lead Status',
-      'Date of Birth',
-      'Date of Hire',
+      'Birthdate',
+      'Hire Date',
       'Salary'
       ],
     contextMenu: true,
