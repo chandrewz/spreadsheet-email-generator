@@ -21,7 +21,6 @@ var container = document.getElementById('hot');
 init();
 
 function button() {
-  console.log(hot.getData());
   data = hot.getData();
   var e = document.getElementById('option');
   var option = e.options[e.selectedIndex].value;
@@ -31,6 +30,7 @@ function button() {
   var titlesArray = titles.length > 0 ? titles.split(",").map(function(item) {
     return item.trim()
   }) : [];
+
   window.localStorage.titles = titles
 
   for (var i in data) {
@@ -64,7 +64,8 @@ function button() {
       row[9] = data[0][9] ? data[0][9] : '';
 
       // Lead Status
-      if (row[4] && titlesArray.length > 0 && titlesArray.indexOf(row[4])) {
+      if (row[4] != null && row[4] != '' && titlesArray.length > 0 && titlesArray.indexOf(row[4]) > -1) {
+        console.log(row[4]);
         row[10] = 'Do Not Market'
       } else if (row[4] && data[0][10]) {
         row[10] = data[0][10]
@@ -223,8 +224,6 @@ function exportCsv() {
 }
 
 function hrlatorCSV(header, data) {
-  // console.log(header);
-  // console.log(data);
     
   // This is to avoid accidentally splitting the actual contents
   tmpColDelim = String.fromCharCode(11), // vertical tab character
@@ -246,9 +245,6 @@ function hrlatorCSV(header, data) {
       }).join(tmpRowDelim)
           .split(tmpRowDelim).join(rowDelim)
           .split(tmpColDelim).join(colDelim) + '"';
-
-    // console.log("CSV");
-    // console.log(csv);
     
     // Data URI
     var uri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
